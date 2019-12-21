@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.sansolue.intellij.renpysupport.RenPySupport</id>
+    <name>RenPy Support by SanSolue</name>
+    <vendor email="samith@sansolue.com" url="http://www.sansolue.com">SanSolue</vendor>
+
+    <description><![CDATA[
+    Enable RenPy project support.<br>
+    You can create new RenPy projects. Run and List them.
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.python-core-capable</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <sdkType implementation="com.sansolue.intellij.renpysupport.module.RenPySdkType" />
+        <moduleType id="RENPY_MODULE" implementationClass="com.sansolue.intellij.renpysupport.module.RenPyModuleType" />
+        <moduleBuilder builderClass="com.sansolue.intellij.renpysupport.module.RenPyModuleBuilder" />
+
+        <fileType name="RenPy" language="RenPy" implementationClass="com.sansolue.intellij.renpysupport.RenPyLanguageFileType" extensions="rpy"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="RenPy.NewFile" text="RenPy Script" description="Create new RenPy script file" class="com.sansolue.intellij.renpysupport.action.NewRenPyFileAction">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+        </action>
+    </actions>
+</idea-plugin>
