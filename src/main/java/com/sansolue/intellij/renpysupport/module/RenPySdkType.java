@@ -122,7 +122,7 @@ public class RenPySdkType extends SdkType {
                         ll = ll.substring(0, ll.length() - 2);
                         return Arrays.stream(ll.split(","))
                                 .limit(3)
-                                .map(String::strip)
+                                .map(String::trim)
                                 .collect(Collectors.joining("_"));
 
                     }
