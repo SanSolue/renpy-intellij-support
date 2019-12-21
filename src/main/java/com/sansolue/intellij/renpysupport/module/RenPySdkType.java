@@ -118,7 +118,7 @@ public class RenPySdkType extends SdkType {
                     BufferedReader r = new BufferedReader(new InputStreamReader(initFile.getInputStream()));
                     Optional<String> line = r.lines().limit(100).filter(l -> l.startsWith("version_tuple = (")).findFirst();
                     if (line.isPresent()) {
-                        String ll = line.get().strip().substring(17);
+                        String ll = line.get().trim().substring(17);
                         ll = ll.substring(0, ll.length() - 2);
                         return Arrays.stream(ll.split(","))
                                 .limit(3)
